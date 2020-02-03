@@ -38,10 +38,11 @@ Project Goals:
 ## Individual Member Contributions
 
 ### Evan
-- Made repository 
-fa4101e13529b331c36f8348abee5a4663d77a6b
+- Made repository [proof](fa4101e13529b331c36f8348abee5a4663d77a6b)
 
 Estimated time allocated this week: 1 Hrs
+
+
 
 For each group member, list the individual contributions, and a link to proof in the form of a commit to your group repository. At the end, provide an estimate for how many hours these contributions took to complete.
 
