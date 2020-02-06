@@ -37,7 +37,7 @@ Project Goals:
 
 ## Individual Member Contributions
 
-### Evan
+### Evan Hruskar
 - Made repository [proof](fa4101e13529b331c36f8348abee5a4663d77a6b)
 
 Estimated time allocated this week: 1 Hrs
