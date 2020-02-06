@@ -1,8 +1,9 @@
-If you have an idea for a project, submit a proposal here. The project proposal should have the following elements:
+# Piezoelectric Micromachined Ultrasonic Transducers (PMUT) for Hand Gesture Recognition 
 
-Title
 
-Project Description
+## Project Description
+
+
 
 Skills Needed
 
