@@ -46,10 +46,8 @@ Estimated time allocated this week: 1 Hrs
 
 For each group member, list the individual contributions, and a link to proof in the form of a commit to your group repository. At the end, provide an estimate for how many hours these contributions took to complete.
 
-### Member Name
+### Jitong Ding
 
-- Contribution 1 [proof](link) 
-- Contribution 2 [proof](link) 
-- Contribution 3 [proof](link)
+-  Study the projects on CourseSite and consider our own project [proof](https://coursesite.lehigh.edu/mod/folder/view.php?id=1791428)
 
-Estimated time allocated this week: X Hrs
+Estimated time allocated this week: 1 Hrs
