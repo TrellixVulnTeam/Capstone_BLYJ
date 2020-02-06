@@ -1,5 +1,7 @@
 # Progress Report 2
 
+For this progress report your should summarize your project idea(s) you are considering. Each team member should also indicate what the topic of their short presentation will be. Evidence of work for this week will be your project proposal. Keep a copy of your project proposal in the docs branch so your team can work on it together.
+
 ## Summary of Work Completed
 
 In this section, describe the work that was completed this week to advance the state of the project.
