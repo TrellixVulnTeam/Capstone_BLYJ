@@ -4,35 +4,32 @@ For this progress report your should summarize your project idea(s) you are cons
 
 ## Summary of Work Completed
 
-In this section, describe the work that was completed this week to advance the state of the project.
+Completed project proposal. See Docs branch. Each team member wrote about their topic for the presentation next week.
 
 ### Goals completed this week
 
-List goals from last week that were completed this week
+None
 
 ### Goals not met this week
 
-List goals from last week that were not completed and why
+None
 
 ### Challenges faced this week
 
-List challenges faced this week and how you plan to overcome them next week
+None
 
 ### Goals for next week
 
-List goals for next week. You will reference these in your next week's progress report.
+Work on the sprint project, get funded, learn more about into PMUT technology.
 
 ## Individual Member Contributions
 
-For each group member, list the individual contributions, and a link to proof in the form of a commit to your group repository. At the end, provide an estimate for how many hours these contributions took to complete.
-
 ### Evan Hruskar
 
-- Contribution 1 [proof](link) 
-- Contribution 2 [proof](link) 
-- Contribution 3 [proof](link)
+- Added template code for future project reports [proof](748d1bf505bd3ffe5d8c18d90f2f556b8f9dce0f) 
+- My presentation topic is Web Scraping, specifically, scraping coursesite. This is a mini project I worked on over break and I'd like to share my results. See the repo [here](https://github.com/7e11/Coursesite-scraper) 
 
-Estimated time allocated this week: X Hrs
+Estimated time allocated this week: 2 Hrs
 
 ### Felix Quintana
 
