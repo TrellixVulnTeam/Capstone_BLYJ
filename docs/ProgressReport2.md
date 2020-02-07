@@ -41,11 +41,11 @@ Estimated time allocated this week: X Hrs
 
 ### Jitong Ding
 
-- Contribution 1 [proof](link) 
-- Contribution 2 [proof](link) 
-- Contribution 3 [proof](link)
+- Find possible way to make the motion detection algorithm of a camera[proof](https://en.wikipedia.org/wiki/Foreground_detection#Using_frame_differencing) 
+- My presentation topic is Sixthsense, a gesture-based wearable computer system developed at MIT Media Lab and used as reference for our project[proof](https://www.youtube.com/watch?v=YrtANPtnhyg) 
+- Study related essays about our project and search through the Google[proof](https://github.com/7e11/Capstone/tree/master/backgroundPapers)
 
-Estimated time allocated this week: X Hrs
+Estimated time allocated this week:  2 Hrs
 
 ### William Chen
 
