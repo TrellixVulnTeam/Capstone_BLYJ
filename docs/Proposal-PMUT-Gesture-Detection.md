@@ -12,19 +12,14 @@ Piezoelectric Micromachined Ultrasonic tranducers (PMUT) recently have in academ
 Currently there are a handful of companies that are working on similar technologies. In Feburary of 2019, Facebook aquired a company called CNTRL Labs that work on similar technology based off of infared technology and electrodes that both do well at hand motion detection/tracking and capturing of the user's intent(such as how hard one is clentching his or her fist).
 
 ### Calling for Funding
-
+To allow us to detect these hand gestures, we need a PMUT sensor to detect muscles and tendons underneath the skin. Currently, as a group we are researching what particular technology that should be used for this. We have DK-CH101 development kit in mind for $200 dollars, but are currently double checking the technology is able to do the job for us. The exact product can be found here: https://www.invensense.com/products/dk-ch101/
 
 ### Development Plans
-
-Skills Needed
-
-Deliverables
-
-There are a number of example project proposals uploaded to course site on the main page. You can look at these for inspiration.
-
+Currently, are devlopment plans are TBD due to the pending particular peice of hardware we are going to use. We know we need to use a PMUT sensor, but still decided the needed frequency, the microcontroller etc. 
 
 ### Concerns
 - Machine learning on time series data frames. (Sliding window ?)
 - Supervised learning, where do we get the training data?
 - What's the advantage over using computer vision and just running ML on that instead?
   - Less dimmensionality? Research fidelity of PMUT.
+- How to get the tracking done exactly?
