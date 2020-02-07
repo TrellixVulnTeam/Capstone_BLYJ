@@ -55,3 +55,7 @@ Estimated time allocated this week: 1 Hrs
 
 ### Felix Quintana
 Looked into our potential project of hand gesture detection. How would we approach this etc.
+
+
+### Will Chen
+Did research on motion recogniton tech.

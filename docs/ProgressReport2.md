@@ -49,8 +49,8 @@ Estimated time allocated this week:  2 Hrs
 
 ### William Chen
 
-- Contribution 1 [proof](link) 
-- Contribution 2 [proof](link) 
-- Contribution 3 [proof](link)
+- My presentation topic is leap motion [proof](https://en.wikipedia.org/wiki/Leap_Motion )
+- Some reference of motion recognition [proof](https://arxiv.org/pdf/1712.00216.pdf) 
+
 
 Estimated time allocated this week: X Hrs
