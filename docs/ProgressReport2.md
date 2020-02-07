@@ -35,7 +35,8 @@ Estimated time allocated this week: 2 Hrs
 
 - Contribution 1 [proof](0bbc0714fbd473a96e9cfe0d90aa9f4b9fc2a6b9) 
 - Contribution 2 [proof](04d26fa5d9eb705e52c7d1b1b672c4787af94ed7) 
-- Created the proposal
+- I wrote the project proposal
+- My presentation topic will be percisly an overview on the technology we would like to utilize for our project! PMUT
 
 Estimated time allocated this week: 2 Hrs
 
