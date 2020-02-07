@@ -33,11 +33,11 @@ Estimated time allocated this week: 2 Hrs
 
 ### Felix Quintana
 
-- Contribution 1 [proof](link) 
-- Contribution 2 [proof](link) 
-- Contribution 3 [proof](link)
+- Contribution 1 [proof](0bbc0714fbd473a96e9cfe0d90aa9f4b9fc2a6b9) 
+- Contribution 2 [proof](04d26fa5d9eb705e52c7d1b1b672c4787af94ed7) 
+- Created the proposal
 
-Estimated time allocated this week: X Hrs
+Estimated time allocated this week: 2 Hrs
 
 ### Jitong Ding
 

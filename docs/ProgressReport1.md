@@ -51,3 +51,7 @@ For each group member, list the individual contributions, and a link to proof in
 -  Study the projects on CourseSite and consider our own project [proof](https://coursesite.lehigh.edu/mod/folder/view.php?id=1791428)
 
 Estimated time allocated this week: 1 Hrs
+
+
+### Felix Quintana
+Looked into our potential project of hand gesture detection. How would we approach this etc.
