@@ -2,7 +2,7 @@
 
 ## Summary of Work Completed
 
-In this section, describe the work that was completed this week to advance the state of the project.
+We've decied on a group name: jestr.
 
 ### Goals completed this week
 
