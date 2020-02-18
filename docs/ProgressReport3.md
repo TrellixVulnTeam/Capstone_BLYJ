@@ -6,19 +6,21 @@ We've decied on a group name: jestr.
 
 ### Goals completed this week
 
-List goals from last week that were completed this week
+Decided on a group name. Read more papers, did more research into PMUT tech.
+Decided that it may be better to transition into camera gesture recognition, so we can focus on the applications
+rather than the tech itself.
 
 ### Goals not met this week
 
-List goals from last week that were not completed and why
+None
 
 ### Challenges faced this week
 
-List challenges faced this week and how you plan to overcome them next week
+None
 
 ### Goals for next week
 
-List goals for next week. You will reference these in your next week's progress report.
+Create a presentation about our project to show to the class. Do more research.
 
 ## Individual Member Contributions
 
