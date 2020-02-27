@@ -1,24 +1,27 @@
 # Progress Report 4
 
+2020.2.23 - 2020.2.29
+
 ## Summary of Work Completed
 
-In this section, describe the work that was completed this week to advance the state of the project.
+Completed presentation, downloaded OpenCV to investigate its gesture recognition capabilities.
+Started searching for a dataset which is appropriate for this project. IBM has one, so do OpenCV and Kaggle.
 
 ### Goals completed this week
 
-List goals from last week that were completed this week
+Our Checkpoint 1 presentation went very well. We still don't know if our project is approved, but we're going to continue working on it.
 
 ### Goals not met this week
 
-List goals from last week that were not completed and why
+None
 
 ### Challenges faced this week
 
-List challenges faced this week and how you plan to overcome them next week
+We had to meet twice outside class to flesh out our presentation and to practice it.
 
 ### Goals for next week
 
-List goals for next week. You will reference these in your next week's progress report.
+Get OpenCV running for everyone. Have preliminary motion regocnition completed.
 
 ## Individual Member Contributions
 
@@ -26,11 +29,11 @@ For each group member, list the individual contributions, and a link to proof in
 
 ### Evan Hruskar
 
-- Contribution 1 [proof](link) 
+- Found IBM and OpenCV datasets [proof](http://www.research.ibm.com/dvsgesture/) 
 - Contribution 2 [proof](link) 
 - Contribution 3 [proof](link)
 
-Estimated time allocated this week: X Hrs
+Estimated time allocated this week: 3 Hrs
 
 ### Felix Quintana
 

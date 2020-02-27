@@ -1,14 +1,17 @@
 # Progress Report 3
 
+2020.2.16 - 2020.2.22
+
 ## Summary of Work Completed
 
-We've decied on a group name: jestr.
+We've decied on a group name: jestr. Read more papers, did more research into PMUT tech.
+Decided that it may be better to transition into camera gesture recognition, so we can focus on the applications
+rather than the tech itself.
 
 ### Goals completed this week
 
-Decided on a group name. Read more papers, did more research into PMUT tech.
-Decided that it may be better to transition into camera gesture recognition, so we can focus on the applications
-rather than the tech itself.
+One goal for this week was to get funded for the PMUT project. Unfortunately, it looks like using ultrasound will
+be a little over our heads, so we've decided to transition into using camera recognition for gesture control.
 
 ### Goals not met this week
 
@@ -16,7 +19,8 @@ None
 
 ### Challenges faced this week
 
-None
+Deciding to shift the technology which is going to underly the entire project is no easy decision.
+However, now that we're more solidified in our direction, we're feeling confident about the future of the project.
 
 ### Goals for next week
 
