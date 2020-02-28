@@ -45,7 +45,7 @@ Estimated time allocated this week: X Hrs
 
 ### Jitong Ding
 
-- Contribution 1 [proof](link) 
+- Search and study the OpenCv [proof](https://opencv.org/) 
 - Contribution 2 [proof](link) 
 - Contribution 3 [proof](link)
 
