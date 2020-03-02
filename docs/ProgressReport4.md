@@ -37,10 +37,7 @@ Estimated time allocated this week: 3 Hrs
 
 ### Felix Quintana
 
-- Contribution 1 [proof](link) 
-- Contribution 2 [proof](link) 
-- Contribution 3 [proof](link)
-
+- Discussed with group on why we need to switch from ultrasonic device to a cnn for now for proof of concept. I researched some ideas on where we should start. For example, leap motion direction? But we eventually found to do something with auto hot heys
 Estimated time allocated this week: X Hrs
 
 ### Jitong Ding

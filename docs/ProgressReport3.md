@@ -40,11 +40,8 @@ Estimated time allocated this week: X Hrs
 
 ### Felix Quintana
 
-- Contribution 1 [proof](link) 
-- Contribution 2 [proof](link) 
-- Contribution 3 [proof](link)
-
-Estimated time allocated this week: X Hrs
+Buckled down and found out about the difficulties that we would face with using the ultrasounic approach. More importantly, we need several MHz to detect tendons which is not plausible with the given proposal. So we need to change dirrection. Trying to figure out if there are other sensors we can use.
+Estimated time allocated this week: 3 Hrs
 
 ### Jitong Ding
 
