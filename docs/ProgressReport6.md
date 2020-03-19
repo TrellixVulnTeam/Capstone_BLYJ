@@ -2,7 +2,17 @@
 
 ## Summary of Work Completed
 
-In this section, describe the work that was completed this week to advance the state of the project.
+Required steps to get OpenCV working:
+1. Download Visual Studio
+2. Download OpenCV
+3. Add OpenCV 14 bin file to path (\[YOUR_PATH\]\opencv\build\x64\vc14\bin)
+4. In VS, create a console project and add a source file w/ OpenCV stuff
+  - I'd recomment looking in (\[YOUR_PATH\]\opencv\sources\samples\cpp)
+    - I used videocapture_basic.cpp
+5. Right click on the project in the solution explorer and open properties. (Make sure you're on Debug and x64)
+  - In C/C++ -> General, Add (\[YOUR_PATH\]\opencv\build\include) to "Additional Include Directories"
+  - In Linker -> General, Add (\[YOUR_PATH\]\opencv\build\x64\vc14\lib) to "Additional Library Directories"
+  - In Linker -> Input, Add opencv_world420d.lib to "Additional Dependencies"
 
 ### Goals completed this week
 
