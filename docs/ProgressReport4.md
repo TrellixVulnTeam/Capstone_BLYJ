@@ -50,7 +50,7 @@ Estimated time allocated this week: X Hrs
 
 ### William Chen
 
-- Contribution 1 [proof](link) 
+- Started implementing openCV on mac
 - Contribution 2 [proof](link) 
 - Contribution 3 [proof](link)
 
