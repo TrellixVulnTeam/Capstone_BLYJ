@@ -53,8 +53,7 @@ Estimated time allocated this week: X Hrs
 
 ### William Chen
 
-- Contribution 1 [proof](link) 
-- Contribution 2 [proof](link) 
-- Contribution 3 [proof](link)
+- Further research into gesture recognition from Chinese website 
+
 
 Estimated time allocated this week: X Hrs
