@@ -68,7 +68,7 @@ Estimated time allocated this week: X Hrs
 
 ### William Chen
 
-- Contribution 1 [proof](link) 
+- Set up the openve with Xcode on Mac
 - Contribution 2 [proof](link) 
 - Contribution 3 [proof](link)
 
