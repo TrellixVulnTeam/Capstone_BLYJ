@@ -34,11 +34,10 @@ Estimated time allocated this week: X Hrs
 
 ### Felix Quintana
 
-- Contribution 1 [proof](link) 
-- Contribution 2 [proof](link) 
-- Contribution 3 [proof](link)
+I spent a few hours this week getting ubuntu to work with opencv since windows was buggy for me. However, I found ubuntu to be even less forgiving with having a constant flow of broken packages even after a clean install of ubuntu 18.04.
 
-Estimated time allocated this week: X Hrs
+
+Estimated time allocated this week: 3.5 Hrs
 
 ### Jitong Ding
 

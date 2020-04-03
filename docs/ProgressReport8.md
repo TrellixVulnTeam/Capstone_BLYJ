@@ -34,11 +34,9 @@ Estimated time allocated this week: X Hrs
 
 ### Felix Quintana
 
-- Contribution 1 [proof](link) 
-- Contribution 2 [proof](link) 
-- Contribution 3 [proof](link)
+After spending many hours to get openCV to work on ubuntu, I unfortunately failed to do so. However, I was able to successfuly get it working on windows using a more details set up than Evan detailed in previous reports. I got a test code up and running at the moment that can capture live video and save each of the frames to a image file of your choosing. My next step is to capture some sample data to hopefully than pass through a discrete fourier transform to get frequency map of the photos to train the neural network for feature extraction. 
 
-Estimated time allocated this week: X Hrs
+Estimated time allocated this week: 8 Hrs
 
 ### Jitong Ding
 
