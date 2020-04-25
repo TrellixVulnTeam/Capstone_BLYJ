@@ -1,54 +1,54 @@
-/**
-  @file videocapture_basic.cpp
-  @brief A very basic sample for using VideoCapture and VideoWriter
-  @author PkLab.net
-  @date Aug 24, 2016
-*/
-
 #include <opencv2/core.hpp>
 #include <opencv2/videoio.hpp>
 #include <opencv2/highgui.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 #include <iostream>
 #include <stdio.h>
-
 using namespace cv;
 using namespace std;
-
-int main(int, char**)
-{
-    Mat frame;
-    //--- INITIALIZE VIDEOCAPTURE
-    VideoCapture cap;
-    // open the default camera using default API
-    // cap.open(0);
-    // OR advance usage: select any API backend
-    int deviceID = 0;             // 0 = open default camera
-    int apiID = cv::CAP_ANY;      // 0 = autodetect default API
-    // open selected camera using selected API
-    cap.open(deviceID + apiID);
-    // check if we succeeded
-    if (!cap.isOpened()) {
-        cerr << "ERROR! Unable to open camera\n";
-        return -1;
-    }
-
-    //--- GRAB AND WRITE LOOP
-    cout << "Start grabbing" << endl
-        << "Press any key to terminate" << endl;
-    for (;;)
-    {
-        // wait for a new frame from camera and store it into 'frame'
-        cap.read(frame);
-        // check if we succeeded
-        if (frame.empty()) {
-            cerr << "ERROR! blank frame grabbed\n";
-            break;
+class videoCapture {
+public:
+    videoCapture(int apiID, int deviceID = 0) {
+        if (isInitialized) {
+            cout << "Already initialized";
         }
-        // show live and wait for a key with timeout long enough to show images
-        imshow("Live", frame);
-        if (waitKey(5) >= 0)
-            break;
+        else {
+            cap.open(deviceID + apiID);
+            if (!cap.isOpened()) {
+                cerr << "ERROR! Unable to open camera\n";
+            }
+        }
     }
-    // the camera will be deinitialized automatically in VideoCapture destructor
-    return 0;
-}
+    int capture(int numOfFrames) {
+        int count = 0;
+        for (int i = 0; i < numOfFrames; i++) {
+            cap.read(frame);
+            if (frame.empty()) {
+                cerr << "ERROR! blank frame grabbed\n";
+                break;
+            }
+            cv::cvtColor(frame, grayframe, cv::COLOR_BGR2GRAY);
+            // show live and wait for a key with timeout long enough to show images
+            imshow("Live", grayframe);
+            string path = "/Users/felix/test";
+            path = path + char(++count) + ".png";
+            if (waitKey(5) >= 0) {
+                cv::imwrite(path, frame);
+                waitKey(5);
+            }
+        }
+        return 0;
+
+    }
+private:
+    bool isInitialized = false;
+    Mat frame;
+    VideoCapture cap;
+    Mat grayframe;
+};
+/*int main(int, char**) {
+
+    videoCapture video(0, cv::CAP_ANY);
+    video.capture(1000);
+}*/
