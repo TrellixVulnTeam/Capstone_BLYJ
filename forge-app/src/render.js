@@ -3,9 +3,9 @@ const rightBtn = document.getElementById('rightBtn');
 const minBtn = document.getElementById('minBtn');
 
 const remote = require('electron');
-const ffi = require('ffi-napi');
-const ref = require('ref-napi');
-const StructType = require('ref-struct-di');
+// const ffi = require('ffi-napi');
+// const ref = require('ref-napi');
+// const StructType = require('ref-struct-di');
 const ks = require('node-key-sender');
 
 // This uses ref-struct-di
