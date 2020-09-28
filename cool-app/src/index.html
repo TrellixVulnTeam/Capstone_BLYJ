@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Electron App Demo</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <h1>💖 Electron App Demo 💖</h1>
+    <p>Welcome to the application!</p>
+    <div id="user"> 
+      <button id="userpage">User Page</button>
+    </div>
+
+    <script src="render.js" type="text/javascript"></script>
+    <!-- <script type="text/javascript">
+      const path = require('path');
+      const { app, BrowserWindow } = require('electron');
+      //require('./index')
+      function page(){
+        let modalPath = path.join('file://', __dirname, 'src/userpage.html')
+        let win = new BrowserWindow({ frame: false })
+
+        win.on('close', () => { win = null })
+        win.loadURL(modalPath)
+        win.show()
+      } -->
+    </script>
+  </body>
+</html>
