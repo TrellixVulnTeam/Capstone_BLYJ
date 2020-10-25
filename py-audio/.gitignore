@@ -1,0 +1,5 @@
+.vscode/
+venv/
+# Get the default deepspeech models here https://deepspeech.readthedocs.io/en/v0.8.2/
+audio*
+deepspeech*
