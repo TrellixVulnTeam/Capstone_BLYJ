@@ -1,0 +1,66 @@
+h1{
+    font-style: italic;
+    text-align:center;
+    color:white;
+}
+
+body{
+    font-family: system, -apple-system, '.SFNSText-Regular', 'SF UI Text', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+	color: #fff;
+	background-color: #8aba87;
+	text-align: center;
+	font-size: 40px;
+}
+
+#out{/* Control the button 1's position*/
+    float: left;
+    position: fixed;
+    left: 95%;
+    top: 4%;
+    transform: translate(-50%, -50%);
+}
+
+#out button {/* Control the button 1's size*/
+    background-color: #FAEBD7;
+    width: 120px;
+    font-style: italic;
+    font-size : 30%;
+}
+
+#Add{/* Control the button 2's position*/
+    float: left;
+    position: fixed;
+    left: 5%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+}
+
+#Add button {/* Control the button 2's size*/
+    background-color: #FAEBD7;
+    width: 100px;
+    font-size : 30%;
+    font-style: italic;
+}
+
+
+#name{
+    background-color: lightblue;
+    color: black;
+    padding: 20px;
+    text-align: left;
+}
+
+#email{
+    background-color: lightblue;
+    color: black;
+    padding: 20px;
+    text-align: left;
+}
+
+
+#gesture{
+    background-color: lightblue;
+    color: black;
+    padding: 20px;
+    text-align: left;
+}
