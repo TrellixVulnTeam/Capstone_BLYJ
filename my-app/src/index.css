@@ -1,6 +1,86 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   margin: auto;
   max-width: 38rem;
-  padding: 2rem;
+  padding: 2rem; */
+  font-family: system, -apple-system, '.SFNSText-Regular', 'SF UI Text', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+	color:black;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+	text-align: center;
+	font-size: 40px;
 }
+
+
+#gesture-window{
+  left: 95%;
+  top: 50%
+}
+
+#sound-window{
+  left: 5%;
+  top: 50%
+}
+
+
+.arrow {
+  position: absolute;
+  padding: 3rem; /* Arrow size */
+  box-shadow: 1px -1px 0 1px plum inset;
+  -webkit-box-shadow: 2px -2px plum inset;
+  border: solid transparent;
+  border-width: 0 0 2rem 2rem;
+  transition: 0.2s;
+  }
+.arrow:hover {
+  box-shadow: 2px -2px 0 2px orchid inset;
+  -webkit-box-shadow: 4px -4px orchid inset;
+  }
+  .arrow { top:50%;margin:-67px 0 0 -67px;left:35% }
+  a:nth-child(2) { left:65% }
+  .arrow-up    { transform:rotate(135deg) }
+  .arrow-right { transform:rotate(225deg) }
+  .arrow-down  { transform:rotate(-45deg) }
+  .arrow-left  { transform:rotate(45deg) }
+
+
+
+/* .arrow {
+  cursor: pointer;
+  display: inline-block;  
+  height: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  position: relative;
+  line-height: 2.5em;
+  padding-left: 1em;
+  padding-right: 2em;
+  background:yellow;
+  color: black;
+   &:after {
+    // triangle hover color
+    border-left: 20px solid white;
+  }
+}
+
+.arrow:after {
+  // the triangle
+  content: "";
+  position: absolute;
+  border-bottom: 20px solid transparent;
+  border-top: 20px solid transparent;
+  height: 0px;
+  width: 0px;
+  margin-right: -20px;
+  right: 0; 
+}
+
+.arrow:hover, .arrow:active {
+  background: yellow;
+  color: black;
+  &:after {
+    // triangle hover
+    border-left: 20px solid yellow;
+  }
+} */
