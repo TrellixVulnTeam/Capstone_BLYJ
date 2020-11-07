@@ -88,6 +88,7 @@ private:
     	return (int)floor(radian * 180. / M_PI + 0.5);
     }
 };
+    
 
 REGISTER_CALCULATOR(HandGestureRecognitionCalculator);
 
@@ -323,7 +324,7 @@ REGISTER_CALCULATOR(HandGestureRecognitionCalculator);
         recognized_hand_gesture = new std::string("___");
         LOG(INFO) << "Finger States: " << thumbIsOpen << firstFingerIsOpen << secondFingerIsOpen << thirdFingerIsOpen << fourthFingerIsOpen;       
     }
-    LOG(INFO) << recognized_hand_gesture->c_str();
+    LOG(INFO) << "GESTURE " <<  recognized_hand_gesture->c_str();
 
     cc->Outputs()
         .Tag(recognizedHandGestureTag)
