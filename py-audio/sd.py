@@ -10,6 +10,7 @@ from typing import List
 import pyautogui
 from enum import Enum
 import pyttsx3
+from pathlib import Path
 
 engine = pyttsx3.init('espeak')
 
@@ -90,54 +91,45 @@ special_map = {
     'tell me a joke': (joke,),
 }
 
-print('Beginning recording')
-duration = 4  # seconds
-stream = sd.InputStream(device='HyperX 7.1 Audio', channels=1, samplerate=fs, dtype='int16', callback=audio_callback)
-with stream:
-    model = Model('./deepspeech-0.8.1-models.pbmm')
-    tab_index = 0
-    while True:
-        pre_buffer, data = q.get()
-        buffer = list(pre_buffer)
-        buffer.extend(data)
-        print(len(pre_buffer), len(data))
-        # compress the data into one array
-        flat_data = np.concatenate(buffer).ravel()
-        print(flat_data.shape)
-        output = model.stt(flat_data)
-        print(output)
-        if output in special_map:
-            item = special_map[output]
-            if isinstance(item, str):
-                # FIXME: reset tab index on send
-                # This is some kind of hotkey / other thing
-                pyautogui.hotkey(item)
-            elif isinstance(item, int):
-                # tab manipulation
-                tabs = item - tab_index
-                tab_index = item
-                if tabs > 0:
-                    for _ in range(abs(tabs)):
-                        pyautogui.hotkey('tab')
-                elif tabs < 0:
-                    for _ in range(abs(tabs)):
-                        pyautogui.hotkey('shift', 'tab')
-            elif isinstance(item, tuple):
-                # It's a function, just call it with its args
-                item[0](*item[1:])
-        else:
-            # Just send it as string input
-            pyautogui.write(output)
+def record(job_queue: Queue, model_path: Path):
+    print('Beginning recording')
+    duration = 4  # seconds
+    stream = sd.InputStream(device='HyperX 7.1 Audio', channels=1, samplerate=fs, dtype='int16', callback=audio_callback)
+    with stream:
+        model = Model(str(model_path))
+        tab_index = 0
+        while True:
+            pre_buffer, data = q.get()
+            buffer = list(pre_buffer)
+            buffer.extend(data)
+            # print(len(pre_buffer), len(data))
+            # compress the data into one array
+            flat_data = np.concatenate(buffer).ravel()
+            # print(flat_data.shape)
+            output = model.stt(flat_data)
+            job_queue.put(("VOICE", output))
+            # if output in special_map:
+            #     item = special_map[output]
+            #     if isinstance(item, str):
+            #         # FIXME: reset tab index on send
+            #         # This is some kind of hotkey / other thing
+            #         pyautogui.hotkey(item)
+            #     elif isinstance(item, int):
+            #         # tab manipulation
+            #         tabs = item - tab_index
+            #         tab_index = item
+            #         if tabs > 0:
+            #             for _ in range(abs(tabs)):
+            #                 pyautogui.hotkey('tab')
+            #         elif tabs < 0:
+            #             for _ in range(abs(tabs)):
+            #                 pyautogui.hotkey('shift', 'tab')
+            #     elif isinstance(item, tuple):
+            #         # It's a function, just call it with its args
+            #         item[0](*item[1:])
+            # else:
+            #     # Just send it as string input
+            #     pyautogui.write(output)
 
-
-# audio: np.ndarray = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype='int16')
-# sd.wait()
-# myrecording_flat = audio.flatten()
-# print(myrecording_flat)
-
-# Create deepspeech model
-# model = Model('./deepspeech-0.8.1-models.pbmm')
-# print(model.stt(myrecording_flat))
-# sd.play(audio, fs)
-# sd.wait()
-
+if __name__ == "__main__":
+    record('./deepspeech-0.8.1-models.pbmm')

@@ -164,22 +164,22 @@ REGISTER_CALCULATOR(HandGestureRecognitionCalculator);
     else if (!thumbIsOpen && firstFingerIsOpen && secondFingerIsOpen && thirdFingerIsOpen && fourthFingerIsOpen)
     {
         recognized_hand_gesture = new std::string("FOUR");
-        switch_desktop(3);
+        // switch_desktop(3);
     }
     else if (thumbIsOpen && firstFingerIsOpen && secondFingerIsOpen && !thirdFingerIsOpen && !fourthFingerIsOpen)
     {
         recognized_hand_gesture = new std::string("TREE");
-        switch_desktop(2);
+        // switch_desktop(2);
     }
     else if (thumbIsOpen && firstFingerIsOpen && !secondFingerIsOpen && !thirdFingerIsOpen && !fourthFingerIsOpen)
     {
         recognized_hand_gesture = new std::string("TWO");
-        switch_desktop(1);
+        // switch_desktop(1);
     }
     else if (!thumbIsOpen && firstFingerIsOpen && !secondFingerIsOpen && !thirdFingerIsOpen && !fourthFingerIsOpen)
     {
         recognized_hand_gesture = new std::string("ONE");
-        switch_desktop(0);
+        // switch_desktop(0);
     }
     else if (!thumbIsOpen && firstFingerIsOpen && secondFingerIsOpen && !thirdFingerIsOpen && !fourthFingerIsOpen)
     {
@@ -206,7 +206,7 @@ REGISTER_CALCULATOR(HandGestureRecognitionCalculator);
         recognized_hand_gesture = new std::string("___");
         LOG(INFO) << "Finger States: " << thumbIsOpen << firstFingerIsOpen << secondFingerIsOpen << thirdFingerIsOpen << fourthFingerIsOpen;       
     }
-    LOG(INFO) << recognized_hand_gesture->c_str();
+    LOG(INFO) << "GESTURE " << recognized_hand_gesture->c_str();
 
     cc->Outputs()
         .Tag(recognizedHandGestureTag)
