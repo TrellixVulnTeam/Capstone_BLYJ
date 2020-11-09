@@ -7,11 +7,15 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 }
 
 const createWindow = () => {
+  let win = new BrowserWindow({ show: false })
+  win.once('ready-to-show', () => {
+  win.show()
+})
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 500,
-    height: 400,
-    // kiosk: true,
+    width:1300,
+    height: 1200,
+    //kiosk: true,
     // webSecurity: false,
     webPreferences: {
       // Allows us to call nodejs globals in the frontend code
@@ -20,11 +24,21 @@ const createWindow = () => {
     },
   });
 
+  let child = new BrowserWindow({ 
+    width:800,
+    height: 700,
+    kiosk: true,
+    webSecurity: false,
+    transparent: true,
+    frame: false,
+    parent: mainWindow })
+  child.loadFile(path.join(__dirname, 'login.html'));
+
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
-
+  mainWindow.on('close', () => { win = null })
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
