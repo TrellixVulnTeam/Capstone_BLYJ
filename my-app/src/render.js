@@ -4,6 +4,7 @@ const soundWinBtn = document.getElementById('sound-window')
 const fs = require('fs');
 const yaml = require('js-yaml');
 const pythoNFile = document.getElementById('script')
+const { exec } = require('child_process');
 
 
 const path = require('path')
@@ -30,6 +31,16 @@ newWindowBtn.addEventListener('click', (event) => {
   win.show()
 
   
+
+
+  exec('python hello.py', (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+    console.error(`stderr: ${stderr}`);
+});
   win.webContents.openDevTools();
 
 })

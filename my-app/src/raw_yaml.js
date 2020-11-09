@@ -2,6 +2,7 @@ const OneBtn = document.getElementById('editOne')
 const fs = require('fs');
 const yaml = require('js-yaml');
 const path = require('path')
+const { exec } = require('child_process');
 const TwoBtn = document.getElementById('editTwo')
 const ThreeBtn = document.getElementById('editThree')
 const FourBtn = document.getElementById('bt4')
@@ -14,6 +15,7 @@ const LeftBtn = document.getElementById('bt10')
 const RightBtn = document.getElementById('bt11')
 const UpBtn = document.getElementById('bt12')
 const DownBtn = document.getElementById('bt13')
+// const Btn = document.getelementbtu
 // let fileContents = fs.readFileSync("configuration.yml");
 // let data = yaml.load(fileContents);
 // // document.getElementById("text").innerHTML = data.toString;
@@ -296,3 +298,14 @@ DownBtn.addEventListener('click', (event) => {
     let yamlStr = yaml.safeDump(data);
     fs.writeFileSync('configuration.yml', yamlStr);
   })  
+
+function runFile(){
+    exec('python hello.py', (error, stdout, stderr) => {
+        if (error) {
+          console.error(`exec error: ${error}`);
+          return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
+
+}

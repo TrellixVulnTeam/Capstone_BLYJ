@@ -43,6 +43,8 @@
     }
   },
   "dependencies": {
+    "electron-prebuilt": "^1.4.13",
+    "electron-spawn": "^5.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "js-yaml": "^3.14.0"
   },
