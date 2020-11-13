@@ -1,5 +1,5 @@
-ONE: Desktop one
-TWO: '123'
+ONE: null
+TWO: null
 THREE: null
 FOUR: null
 FIST: null
@@ -11,3 +11,4 @@ Slide_left: null
 Slide_right: null
 Scrolling_up: null
 Scrolling_down: null
+VOICE: null
