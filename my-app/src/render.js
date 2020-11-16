@@ -1,4 +1,4 @@
-const {BrowserWindow} = require('electron').remote
+//const {BrowserWindow} = require('electron').remote
 //const newWindowBtn = document.getElementById('gesture-window')
 //const soundWinBtn = document.getElementById('sound-window')
 const fs = require('fs');
@@ -14,9 +14,23 @@ console.log(data.VOICE);
 $('#fourteen option:contains(' + data.VOICE + ')').attr('selected', 'selected');
 //document.querySelector('#fourteen').textContent;
 //console.log(document.querySelector('#fourteen').value);
-submitButton.addEventListener('click',(event)=>{
+// submitButton.addEventListener('click',(event)=>{
 
-});
+// });
+
+var actions = ["Desktop one", "Desktop two", "Desktop three","Desktop four"];
+var id = ["first","second","third","fourth","five","six","seven","eight","nine","ten","eleven","twelve","thirteen"];
+for(var j =0; j < id.length;++j){
+  for(var i = 0; i < actions.length;++i){
+    // var x = document.getElementById("1");
+    var x = document.getElementById(id[j]);
+    var option = document.createElement("option");
+    option.text = actions[i];
+    console.log(j);
+    x.add(option, x[0]);
+  }
+  
+}
 /*newWindowBtn.addEventListener('click', (event) => {
   const modalPath = path.join('file://', __dirname, '../../my-app/src/gesture.html')
   let win = new BrowserWindow({ 
