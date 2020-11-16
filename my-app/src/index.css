@@ -72,7 +72,9 @@ h1{
   .arrow-down  { transform:rotate(-45deg) }
   .arrow-left  { transform:rotate(45deg) }
   
-
+  h2.ui.icon.header{
+    display: block;
+  }
 /* .arrow {
   cursor: pointer;
   display: inline-block;  
