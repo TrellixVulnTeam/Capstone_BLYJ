@@ -1,15 +1,23 @@
 const {BrowserWindow} = require('electron').remote
-const newWindowBtn = document.getElementById('gesture-window')
-const soundWinBtn = document.getElementById('sound-window')
+//const newWindowBtn = document.getElementById('gesture-window')
+//const soundWinBtn = document.getElementById('sound-window')
 const fs = require('fs');
 const yaml = require('js-yaml');
-const pythoNFile = document.getElementById('script')
+//const pythoNFile = document.getElementById('script')
 const { exec } = require('child_process');
+const submitButton = document.getElementById("submitButton");
 
+const path = require('path');
+let fileContents = fs.readFileSync('configuration.yml');
+let data = yaml.load(fileContents);
+console.log(data.VOICE);
+$('#fourteen option:contains(' + data.VOICE + ')').attr('selected', 'selected');
+//document.querySelector('#fourteen').textContent;
+//console.log(document.querySelector('#fourteen').value);
+submitButton.addEventListener('click',(event)=>{
 
-const path = require('path')
-
-newWindowBtn.addEventListener('click', (event) => {
+});
+/*newWindowBtn.addEventListener('click', (event) => {
   const modalPath = path.join('file://', __dirname, '../../my-app/src/gesture.html')
   let win = new BrowserWindow({ 
     width: 1300, 
@@ -75,4 +83,5 @@ soundWinBtn.addEventListener('click', (event) => {
 //     console.log(data);
 // }
 
+*/
 

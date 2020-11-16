@@ -24,7 +24,7 @@ const createWindow = () => {
     },
   });
 
-  let child = new BrowserWindow({ 
+  /*let child = new BrowserWindow({ 
     width:800,
     height: 700,
     kiosk: true,
@@ -32,7 +32,7 @@ const createWindow = () => {
     transparent: true,
     frame: false,
     parent: mainWindow })
-  child.loadFile(path.join(__dirname, 'login.html'));
+  child.loadFile(path.join(__dirname, 'login.html'));*/
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));

@@ -5,7 +5,7 @@ body {
   padding: 2rem; */
   font-family: system, -apple-system, '.SFNSText-Regular', 'SF UI Text', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
   color:black;
-  background-color: #8aba87;
+  background-color: #6e3a3a;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -52,8 +52,6 @@ h1{
   font-size: 30px;
   text-decoration: none;
 }
-
-
 .arrow {
   position: absolute;
   padding: 3rem; /* Arrow size */
@@ -73,8 +71,7 @@ h1{
   .arrow-right { transform:rotate(225deg) }
   .arrow-down  { transform:rotate(-45deg) }
   .arrow-left  { transform:rotate(45deg) }
-
-
+  
 
 /* .arrow {
   cursor: pointer;
