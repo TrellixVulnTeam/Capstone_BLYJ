@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://fonts.googleapis.com/; script-src 'self' 'unsafe-inline'; font-src 'self' data: *">
+    <script src="./renderer.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <!-- Semantic UI Stylesheet, Jquery, and JS Links -->
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <script>
+      // Required to get jquery to work (in semantic UI). This requires nodeIntegration
+      window.$ = window.jQuery = require("jquery");
+    </script>
+    <script src="semantic/dist/semantic.min.js"></script>
+    <title>Jestr</title>
+  </head>
+  <body>
+
+    <!-- Main Card holder. The "one" class specifies the number of columns -->
+    <div class="ui one cards" id="cardcontainer">
+      <div class="card">
+        <div class="content">
+          <span class="left floated">
+            Input: &nbsp;
+            <div class="ui dropdown inputselector">
+              <div class="text"></div>
+              <i class="dropdown icon"></i>
+            </div>
+          </span>
+          <span class="right floated">
+            Action: &nbsp;
+            <div class="ui dropdown actionselector">
+              <div class="text"></div>
+              <i class="dropdown icon"></i>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom left add button -->
+    <button class="circular ui icon button primary huge" id="addbtn">
+      <i class="icon plus"></i>
+    </button>
+    <!-- Bottom right save button -->
+    <button class="circular ui icon button secondary huge" id="savebtn">
+      <i class="save icon"></i>
+    </button>
+  </body>
+</html>

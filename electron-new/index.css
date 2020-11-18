@@ -1,0 +1,30 @@
+/* Bottom left position */
+#addbtn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+
+/* Bottom right position */
+#savebtn {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 1em;
+    margin-right: 1em;
+}
+
+/* Center the cardcontainer ID & width limit it for style. */
+#cardcontainer {
+    margin: auto;
+    width: 80%;
+    /* Large bottom pad so we don't intersect with the buttons. */
+    padding-bottom: 20%;
+}
+
+/* nice scrolling when we scroll the newly added cards into view */
+html {
+    scroll-behavior: smooth;
+}
