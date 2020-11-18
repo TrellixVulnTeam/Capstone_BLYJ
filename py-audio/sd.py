@@ -15,7 +15,8 @@ from pathlib import Path
 engine = pyttsx3.init('espeak')
 
 fs = 16_000
-sd.default.device = 'HyperX 7.1 Audio'
+# sd.default.device = 'HyperX 7.1 Audio'
+sd.default.device = 7
 insert_index = 0
 arr: np.ndarray = np.zeros((1_000_000,), dtype='int16')
 ringbuffer = deque(maxlen=40)
@@ -93,8 +94,7 @@ special_map = {
 
 def record(job_queue: Queue, model_path: Path):
     print('Beginning recording')
-    duration = 4  # seconds
-    stream = sd.InputStream(device='HyperX 7.1 Audio', channels=1, samplerate=fs, dtype='int16', callback=audio_callback)
+    stream = sd.InputStream(channels=1, samplerate=fs, dtype='int16', callback=audio_callback)
     with stream:
         model = Model(str(model_path))
         tab_index = 0
@@ -132,4 +132,18 @@ def record(job_queue: Queue, model_path: Path):
             #     pyautogui.write(output)
 
 if __name__ == "__main__":
-    record('./deepspeech-0.8.1-models.pbmm')
+    print('Beginning recording')
+    stream = sd.InputStream(channels=1, samplerate=fs, dtype='int16', callback=audio_callback)
+    with stream:
+        model = Model('/home/evan/Lehigh/cse281/Capstone/py-audio/deepspeech-0.8.1-models.pbmm')
+        tab_index = 0
+        while True:
+            pre_buffer, data = q.get()
+            buffer = list(pre_buffer)
+            buffer.extend(data)
+            # print(len(pre_buffer), len(data))
+            # compress the data into one array
+            flat_data = np.concatenate(buffer).ravel()
+            # print(flat_data.shape)
+            output = model.stt(flat_data)
+            print(output)
