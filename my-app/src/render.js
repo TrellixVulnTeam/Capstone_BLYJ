@@ -1,152 +1,137 @@
 const {BrowserWindow} = require('electron').remote
-//const newWindowBtn = document.getElementById('gesture-window')
-//const soundWinBtn = document.getElementById('sound-window')
-const fs = require('fs');
-const yaml = require('js-yaml');
-//const pythoNFile = document.getElementById('script')
-const { exec } = require('child_process');
-const submitButton = document.getElementById("submitButton");
+const fs = require("fs"); 
+const { type } = require('os');
+var tableID = 0;
+var gestures = ["ONE","TWO", "THREE", "FOUR","FIST","OK","YEAH","ROCK","SPIDERMAN","Slide_left","Slide_right","Scrolling_up","Scrolling_down","Voice"]
+var action_type = ["Open Terminal","Text to speech","Switch desktop"]
 
-const path = require('path');
-let fileContents = fs.readFileSync('configuration.yml');
-let data = yaml.load(fileContents);
-//$('#fourteen option:contains(' + data.VOICE + ')').attr('selected', 'selected');
-$('#first > option').each(function(){
-  if($(this).val()== data.ONE) $(this).parent('select').val($(this).val())
-});
-$('#second > option').each(function(){
-  if($(this).val()== data.TWO) $(this).parent('select').val($(this).val())
-});
-$('#third > option').each(function(){
-  if($(this).val()== data.THREE) $(this).parent('select').val($(this).val())
-});
-$('#fourth > option').each(function(){
-  if($(this).val()== data.FOUR) $(this).parent('select').val($(this).val())
-});
-$('#five > option').each(function(){
-  if($(this).val()== data.FIST) $(this).parent('select').val($(this).val())
-});
-$('#six > option').each(function(){
-  if($(this).val()== data.OK) $(this).parent('select').val($(this).val())
-});
-$('#seven > option').each(function(){
-  if($(this).val()== data.YEAH) $(this).parent('select').val($(this).val())
-});
-$('#eight > option').each(function(){
-  if($(this).val()== data.ROCK) $(this).parent('select').val($(this).val())
-});
-$('#nine > option').each(function(){
-  if($(this).val()== data.SPIDERMAN) $(this).parent('select').val($(this).val())
-})
-$('#ten > option').each(function(){
-  if($(this).val()== data.Slide_left) $(this).parent('select').val($(this).val())
-})
-$('#eleven > option').each(function(){
-  if($(this).val()== data.Slide_right) $(this).parent('select').val($(this).val())
-});
-$('#twelve > option').each(function(){
-  if($(this).val()== data.Scrolling_up) $(this).parent('select').val($(this).val())
-})
-$('#thirteen > option').each(function(){
-    if($(this).val()== data.Scrolling_down) $(this).parent('select').val($(this).val())
-});
-$('#fourteen > option').each(function(){
-  if($(this).val()== data.VOICE) $(this).parent('select').val($(this).val())
-});
-//document.querySelector('#fourteen').textContent;
-//console.log(document.querySelector('#fourteen').value);
-submitButton.addEventListener('click',(event)=>{
-  data.ONE = document.querySelector('#first').value
-  data.TWO = document.querySelector('#second').value
-  data.THREE = document.querySelector('#third').value
-  data.FOUR = document.querySelector('#fourth').value
-  data.FIST = document.querySelector('#five').value
-  data.OK = document.querySelector('#six').value
-  data.YEAH = document.querySelector('#seven').value
-  data.ROCK = document.querySelector('#eight').value
-  data.SPIDERMAN = document.querySelector('#nine').value
-  data.Slide_left = document.querySelector('#ten').value
-  data.Slide_right = document.querySelector('#eleven').value
-  data.Scrolling_up = document.querySelector('#twelve').value
-  data.Scrolling_down = document.querySelector('#thirteen').value
-  data.VOICE = document.querySelector('#fourteen').value
-  let yamlStr = yaml.safeDump(data);
-  fs.writeFileSync('configuration.yml', yamlStr);
-});
+window.onload = function(){
+    $('.message .close')
+    .on('click', function() {
+        $(this).closest('.message').transition('fade');
+    });
+    $('.ui.dropdown').dropdown();
+    let add_button = document.getElementById("add");
+    let save_button = document.getElementById("save");
+    add_button.addEventListener('click',event=>{
+      tableID += 1;
+      create_table_entry();
+      document.getElementById("actionChoice"+tableID.toString()).onchange = (event)=>{
+        if($("#actionChoice" + tableID.toString()).val() == "Switch desktop" || $("#actionChoice" + tableID.toString()).val() == "Text to speech"){
+          if(document.getElementById("textresponse" + tableID.toString()) != null){
+            document.getElementById("container"+tableID.toString()).removeChild(document.getElementById("textresponse" + tableID.toString()))
+          }
+        let  formNode = addElement(document.getElementById("container"+tableID.toString()),"div","ui disabled form","textresponse" + tableID.toString(),null,null,null,null)
+        let childNode = addElement(formNode,"div","field",null,null,null,null,null);
+        if($("#actionChoice" + tableID.toString()).val() == "Text to speech"){
+          addElement(childNode,"label",null,null,"Text to speech command",null,null,null);
+        }
+        else{
+          addElement(childNode,"label",null,null,"Desktop number to switch to",null,null,null);
+        }
+          addElement(childNode,"input",null,null,null,null,null,"text")
+        }
+        else{ 
+          if(document.getElementById("textresponse" + tableID.toString()) != null){
+            document.getElementById("container"+tableID.toString()).removeChild(document.getElementById("textresponse" + tableID.toString()))
+          }
+        }
+      };
+    });
+    save_button.addEventListener('click',(event)=>{
+      build_json()
+    });
+}
 
 
-exec('python hello.py', (error, stdout, stderr) => {
-  if (error) {
-    console.error(`exec error: ${error}`);
-    return;
-  }
-  console.log(`stdout: ${stdout}`);
-});
-/*newWindowBtn.addEventListener('click', (event) => {
-  const modalPath = path.join('file://', __dirname, '../../my-app/src/gesture.html')
-  let win = new BrowserWindow({ 
-    width: 1300, 
-    height:1200,
-    // kiosk: true,
-    // webSecurity: false,
-    // transparent: true,
-    // frame: false,
-    webPreferences: {
-      // Allows us to call nodejs globals in the frontend code
-      nodeIntegration: true,
-      enableRemoteModule: true,
-    },
-    
-     })
-
-  win.on('close', () => { win = null })
-  win.loadURL(modalPath)
-  win.show()
-
-  
-
-
-  exec('python hello.py', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return;
+function create_table_entry(){
+   let current_node = document.body;
+   current_node = addElement(current_node,"div","ui container","container" + tableID.toString(),null,null,null,null);
+   let childNode = addElement(current_node,"div","ui floating labeled icon dropdown button","action" + tableID.toString(), null,null,null,null); 
+    addElement(childNode,"i","add user icon",null,null,null,null,null);
+    addElement(childNode,"span","text",null,"Add action",null,null,null);
+    childNode = addElement(childNode,"div","menu","actionMenu" + tableID.toString(),null,null,null,null);
+    addElement(childNode,"div","header",null,"Gesture or Voice Command selection",null,null,null);
+    let i = 0
+    for(i; i < gestures.length;i++){
+        addElement(addElement(childNode,"div","item",i,gestures[i],gestures[i],null,null),"img","ui image",gestures[i],null,null,"One.jpg",null)
     }
-    console.log(`stdout: ${stdout}`);
-    console.error(`stderr: ${stderr}`);
-});
-  win.webContents.openDevTools();
-
-})
-
-soundWinBtn.addEventListener('click', (event) => {
-  const modalPath = path.join('file://', __dirname, '../../my-app/src/sound.html')
-  let win = new BrowserWindow({ 
-    width: 1300,
-    height: 1200,
-    // kiosk: true,
-    // webSecurity: false,
-    // transparent: true,
-    // frame: false 
-    webPreferences: {
-      // Allows us to call nodejs globals in the frontend code
-      nodeIntegration: true,
-      enableRemoteModule: true,
-    },
-  })
-
-  win.on('close', () => { win = null })
-  win.loadURL(modalPath)
-  win.show()
-})
-
-
-
-// function loadtext(){
-//     let fileContents = fs.readFileSync("configuration.yml");
-//     let data = yaml.load(fileContents);
-//     document.getElementById('output').textContent="WOrk";//Object.values(data)[0]; 
-//     console.log(data);
-// }
-
-*/
-
+    let formNode = addElement(current_node,"div","ui disabled form","command" + tableID.toString(),null,null,null,null);
+    childNode = addElement(formNode,"div","field",null,null,null,null,null);
+    addElement(childNode,"label",null,null,"Voice Command Keyword(s)",null,null,null);
+    addElement(childNode,"input",null,null,null,null,null,"text")
+    childNode = addElement(current_node,"select","ui dropdown",id="actionChoice" + tableID.toString(),null,null,null,null)
+    for(let i=0; i<action_type.length;i++){
+        addElement(childNode,"option",null,i,action_type[i],action_type[i], null,null);
+    }
+    $('.ui.dropdown').dropdown();
+}
+function addElement(current_node,tag_type,className=null,id=null,innerHTML=null,
+                    nodeValue=null,src=null,nodeType=null){
+    let newNode = document.createElement(tag_type);
+    if(id != null){
+        newNode.id = id;
+    }
+    if(className != null){
+        newNode.className = className;
+    }
+    if(innerHTML != null){
+        newNode.innerHTML = innerHTML;
+    }
+    if(nodeValue != null){
+        newNode.nodeValue = nodeValue;
+    }
+    if(src !=null){
+        newNode.src = src;
+    }
+    if(nodeType != null){
+        newNode.nodeType = nodeType;
+    }
+    current_node.appendChild(newNode)
+    return newNode
+}
+function build_json(){
+  let i = 1;
+  let input_type;
+  let metadata = "";
+  
+  for(i;i<=tableID;i++){//console.log((document.querySelector('.item.active.selected').childNodes[1].id))
+      //console.log(gestures[1].toString())
+      let gesture = document.querySelector('.item.active.selected').childNodes[1].id
+    if(gestures.includes( gestures) && gesture != "Voice"){
+      input_type = "GESTURE"
+      input = document.querySelector('.item.active.selected').childNodes[1].id
+    }
+    else{
+      input_type = "VOICE"
+      console.log(document.querySelector("#command"+i).input)
+      input = document.querySelector("#command"+i).nodeValue
+    }
+    possibleActions = $("#actionChoice"+i).val()
+    if(possibleActions == action_type[2] || possibleActions == action_type[1]){
+      metadata = $("#textresponse"+i).val()
+    }
+      let data = {
+        input_type: input_type,
+        input: input,
+        action_type: possibleActions
+      }
+      if(metadata != ""){
+        data.action_data = metadata;
+      }
+      fs.open("test.json",'w', err => { 
+     
+        // Checking for errors 
+        if (err) throw err;  
+       
+        console.log("Done openning"); // Success 
+    });
+      fs.writeFile("test.json", JSON.stringify(data), err => { 
+     
+        // Checking for errors 
+        if (err) throw err;  
+       
+        console.log("Done writing"); // Success 
+    });
+  }
+}

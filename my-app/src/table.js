@@ -67,6 +67,14 @@ function create_table_entry(){
     childNode = addElement(formNode,"div","field",null,null,null,null,null);
     addElement(childNode,"label",null,null,"Voice Command Keyword(s)",null,null,null);
     addElement(childNode,"input",null,null,null,null,null,"text")
+    childNode = addElement(current_node,"select","ui dropdown",id="actionChoice" + tableID.toString(),null,null,null,null)
+    A = ["option1","option2","option3"]
+    for(let i=0; i<A.length;i++){
+        addElement(childNode,"option",null,i,A[i],A[i], null,null);
+    }
+    $('#actionChoice1 > option').each(function(){
+        if($(this).val() == "dede") {console.log("we did it")};//$(this).parent('select').val($(this).val())
+      })
     //Now create the form();
     //let formNode = document.createElement('div')
     //formNode.className = "ui disabled form"
@@ -81,7 +89,7 @@ function create_table_entry(){
    // newNode = document.createElement('input');
    // newNode.nodeType = "Text";
    // sub_node.appendChild(newNode)
-
+      console.log("hello")
     $('.ui.dropdown').dropdown();
 }
 function addElement(current_node,tag_type,className=null,id=null,innerHTML=null,
@@ -108,3 +116,6 @@ function addElement(current_node,tag_type,className=null,id=null,innerHTML=null,
     current_node.appendChild(newNode)
     return newNode
 }
+$('#actionChoice1 > option').each(function(){
+    if($(this).val()== A[0]) console.log("we did it");//$(this).parent('select').val($(this).val())
+  })
