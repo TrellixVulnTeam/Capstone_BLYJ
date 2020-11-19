@@ -72,9 +72,15 @@ submitButton.addEventListener('click',(event)=>{
   data.VOICE = document.querySelector('#fourteen').value
   let yamlStr = yaml.safeDump(data);
   fs.writeFileSync('configuration.yml', yamlStr);
+});
 
 
-
+exec('python hello.py', (error, stdout, stderr) => {
+  if (error) {
+    console.error(`exec error: ${error}`);
+    return;
+  }
+  console.log(`stdout: ${stdout}`);
 });
 /*newWindowBtn.addEventListener('click', (event) => {
   const modalPath = path.join('file://', __dirname, '../../my-app/src/gesture.html')
