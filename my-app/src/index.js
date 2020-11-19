@@ -35,7 +35,7 @@ const createWindow = () => {
   child.loadFile(path.join(__dirname, 'login.html'));*/
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  mainWindow.loadFile(path.join(__dirname, 'home.html'));
   mainWindow.on('close', () => { win = null })
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
