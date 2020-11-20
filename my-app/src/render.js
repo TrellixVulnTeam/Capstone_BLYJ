@@ -3,8 +3,8 @@ const fs = require("fs");
 const { type } = require('os');
 var tableID = 0;
 var gestures = ["ONE","TWO", "THREE", "FOUR","FIST","OK","YEAH","ROCK","SPIDERMAN","Slide_left","Slide_right","Scrolling_up","Scrolling_down","Voice"]
-var action_type = ["Open Terminal","Text to speech","Switch desktop"]
-
+var action_type = ["Email","Text to speech","Switch desktop","Type","HOTKEY"]
+var voice_actors = ["Arnold Schwarzenegger","Bob Barker","Tucker Carlson"]
 window.onload = function(){
     $('.message .close')
     .on('click', function() {
@@ -17,25 +17,35 @@ window.onload = function(){
       tableID += 1;
       create_table_entry();
       document.getElementById("actionChoice"+tableID.toString()).onchange = (event)=>{
-        if($("#actionChoice" + tableID.toString()).val() == "Switch desktop" || $("#actionChoice" + tableID.toString()).val() == "Text to speech"){
-          if(document.getElementById("textresponse" + tableID.toString()) != null){
-            document.getElementById("container"+tableID.toString()).removeChild(document.getElementById("textresponse" + tableID.toString()))
+         let action_choice = $("#actionChoice" + tableID.toString()).val()
+          for(let i = 0;i<action_type.length;i++){
+      //      console.log(document.getElementById(action_type[i] + tableID.toString()))
+            if(document.getElementById(action_type[i] + "Form" + tableID.toString()) !=null){
+              document.getElementById("container"+tableID.toString()).removeChild(document.getElementById(action_type[i] + "Form" + tableID.toString()))
+            }
+            if(document.getElementById("dropDown" + action_type[1] + tableID.toString()) !=null){
+              document.getElementById("container"+tableID.toString()).removeChild(document.getElementById("dropDown"+action_type[1] + tableID.toString()))
+
+            }
           }
-        let  formNode = addElement(document.getElementById("container"+tableID.toString()),"div","ui disabled form","textresponse" + tableID.toString(),null,null,null,null)
-        let childNode = addElement(formNode,"div","field",null,null,null,null,null);
-        if($("#actionChoice" + tableID.toString()).val() == "Text to speech"){
-          addElement(childNode,"label",null,null,"Text to speech command",null,null,null);
-        }
-        else{
-          addElement(childNode,"label",null,null,"Desktop number to switch to",null,null,null);
-        }
-          addElement(childNode,"input",null,null,null,null,null,"text")
-        }
-        else{ 
-          if(document.getElementById("textresponse" + tableID.toString()) != null){
-            document.getElementById("container"+tableID.toString()).removeChild(document.getElementById("textresponse" + tableID.toString()))
+          if(action_choice == action_type[1]){
+            let  formNode = addElement(document.getElementById("container"+tableID.toString()),"div","ui form",action_choice + "Form" + tableID.toString(),null,null,null,null)
+            let childNode = addElement(formNode,"div","field",null,null,null,null,null);
+            addElement(childNode,"label",null,null,action_choice,null,null,null);
+            addElement(childNode,"input",null,action_choice + tableID.toString(),null,null,null,"text")
+            let dropdownNode = addElement(document.getElementById("container"+tableID.toString()),"select","ui dropdown","dropDown" + action_choice + tableID.toString(),null,null,null,null)
+            for(let i=0; i<voice_actors.length;i++){
+              addElement(dropdownNode,"option",null,i,voice_actors[i],voice_actors[i],null,null)
+            }
           }
+          else if(action_type.includes(action_choice,2)  ){
+
+          let  formNode = addElement(document.getElementById("container"+tableID.toString()),"div","ui form",action_choice + "Form" + tableID.toString(),null,null,null,null)
+          let childNode = addElement(formNode,"div","field",null,null,null,null,null);
+          addElement(childNode,"label",null,null,action_choice,null,null,null);
+          addElement(childNode,"input",null,action_choice + tableID.toString(),null,null,null,"text")
         }
+        
       };
     });
     save_button.addEventListener('click',(event)=>{
@@ -56,10 +66,10 @@ function create_table_entry(){
     for(i; i < gestures.length;i++){
         addElement(addElement(childNode,"div","item",i,gestures[i],gestures[i],null,null),"img","ui image",gestures[i],null,null,"One.jpg",null)
     }
-    let formNode = addElement(current_node,"div","ui disabled form","command" + tableID.toString(),null,null,null,null);
+    let formNode = addElement(current_node,"div","ui  form",null,null,null,null,null);
     childNode = addElement(formNode,"div","field",null,null,null,null,null);
     addElement(childNode,"label",null,null,"Voice Command Keyword(s)",null,null,null);
-    addElement(childNode,"input",null,null,null,null,null,"text")
+    addElement(childNode,"input",null,"command" + tableID.toString(), null,null,null,"text")
     childNode = addElement(current_node,"select","ui dropdown",id="actionChoice" + tableID.toString(),null,null,null,null)
     for(let i=0; i<action_type.length;i++){
         addElement(childNode,"option",null,i,action_type[i],action_type[i], null,null);
@@ -85,7 +95,7 @@ function addElement(current_node,tag_type,className=null,id=null,innerHTML=null,
         newNode.src = src;
     }
     if(nodeType != null){
-        newNode.nodeType = nodeType;
+        newNode.type = nodeType;
     }
     current_node.appendChild(newNode)
     return newNode
@@ -94,44 +104,55 @@ function build_json(){
   let i = 1;
   let input_type;
   let metadata = "";
-  
+  let data = {}
   for(i;i<=tableID;i++){//console.log((document.querySelector('.item.active.selected').childNodes[1].id))
       //console.log(gestures[1].toString())
-      let gesture = document.querySelector('.item.active.selected').childNodes[1].id
-    if(gestures.includes( gestures) && gesture != "Voice"){
-      input_type = "GESTURE"
-      input = document.querySelector('.item.active.selected').childNodes[1].id
-    }
-    else{
-      input_type = "VOICE"
-      console.log(document.querySelector("#command"+i).input)
-      input = document.querySelector("#command"+i).nodeValue
-    }
+      let input = document.querySelector('.item.active.selected').childNodes[1].id
+      let voice_data = null;
+      if(input == "Voice"){
+        voice_data = document.querySelector("#command"+i).value
+      }
+      let input_data = {Voice_input: voice_data}
+
+  
     possibleActions = $("#actionChoice"+i).val()
-    if(possibleActions == action_type[2] || possibleActions == action_type[1]){
-      metadata = $("#textresponse"+i).val()
+    let type_text = null;
+    let tts_speaker = null;
+    let tts_text = null 
+    if(possibleActions == action_type[1]){
+      tts_text = document.getElementById(possibleActions+i).value
+      let speakers = document.getElementById("dropDown" + action_type[1] + i)
+      tts_speaker =  speakers.options[speakers.selectedIndex].text
+      console.log( )
     }
-      let data = {
-        input_type: input_type,
+    else if(action_type.includes(possibleActions,2)){
+      type_text = document.getElementById(possibleActions+i).value
+    }
+      let query = {
         input: input,
-        action_type: possibleActions
+        input_data: input_data,
+        action: possibleActions,
+        action_data: {
+          type_text: type_text,
+          tts_speaker: tts_speaker,
+          tts_text: tts_text
+        }
       }
-      if(metadata != ""){
-        data.action_data = metadata;
-      }
-      fs.open("test.json",'w', err => { 
-     
-        // Checking for errors 
-        if (err) throw err;  
-       
-        console.log("Done openning"); // Success 
-    });
-      fs.writeFile("test.json", JSON.stringify(data), err => { 
-     
-        // Checking for errors 
-        if (err) throw err;  
-       
-        console.log("Done writing"); // Success 
-    });
+      data[i] = query;
+
   }
+  fs.open("test.json",'w', err => { 
+     
+    // Checking for errors 
+    if (err) throw err;  
+   
+    console.log("Done opening"); // Success 
+});
+  fs.writeFile("config.json", JSON.stringify(data), err => { 
+ 
+    // Checking for errors 
+    if (err) throw err;  
+   
+    console.log("Done writing"); // Success 
+});
 }
