@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Jestr App</title>
+        <link rel="stylesheet" href="index.css">
+        <script defer src="render.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+  
+        <script>
+            const jQuery = require('jquery')
+            const $ = jQuery
+            require('../semantic/dist/semantic.min.js')
+        </script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+        <link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
+    </head>
+    <body>
+        <h2 class="ui icon header" id="title">
+            <i class="sign language icon"></i>
+            <div class="content">
+                Jestr
+            </div>
+        </h2>
+        <button class="ui icon button" id="status">
+            <i class="power off icon"></i>
+        </button>
+        <button class="ui icon green outline button" id="add">
+            <i class="plus circle icon"></i>
+        </button>
+        <button class="ui icon blue button" id="save">
+            <i class="save icon"></i>
+        </button>
+        <div class="ui message">
+            <i class="close icon"></i>
+            <div class="header">
+                <i class="inbox icon"></i>
+                    Welcome back!
+            </div>
+            <p>This is a special</p>
+        </div>
+  </body>
+</html>
+

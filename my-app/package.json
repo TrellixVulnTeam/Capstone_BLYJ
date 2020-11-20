@@ -1,0 +1,62 @@
+{
+  "name": "my-app",
+  "productName": "my-app",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\"",
+    "rebuild": "npm rebuild --runtime=electron --target=10.1.1 --disturl=https://atom.io/download/atom-shell --abi=72"
+  },
+  "keywords": [],
+  "author": "djt1028",
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "my_app"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "electron-prebuilt": "^1.4.13",
+    "electron-spawn": "^5.0.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "fomantic-ui": "^2.8.7",
+    "jquery": "^3.5.1",
+    "js-yaml": "^3.14.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "electron": "^10.1.6",
+    "node-key-sender": "^1.0.11"
+  }
+}

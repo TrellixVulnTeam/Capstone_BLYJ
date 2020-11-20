@@ -1,0 +1,87 @@
+body {
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem; */
+  font-family: system, -apple-system, '.SFNSText-Regular', 'SF UI Text', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+  color:black;
+  background-color: #6e3a3a;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+	text-align: center;
+	font-size: 40px;
+}
+
+html {
+  scroll-behavior: smooth;
+ }
+
+h1{
+  text-transform: uppercase;
+  font-family: 'Exo 2', sans-serif;
+}
+
+#add{
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+#save{
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+#status{
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+.ui.dropdown{
+  float: left;
+}
+
+.ui.form{
+  float: left;
+}
+div.ui.container{
+  display: flex;
+}
+/* .arrow {
+  cursor: pointer;
+  display: inline-block;  
+  height: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  position: relative;
+  line-height: 2.5em;
+  padding-left: 1em;
+  padding-right: 2em;
+  background:yellow;
+  color: black;
+   &:after {
+    // triangle hover color
+    border-left: 20px solid white;
+  }
+}
+
+.arrow:after {
+  // the triangle
+  content: "";
+  position: absolute;
+  border-bottom: 20px solid transparent;
+  border-top: 20px solid transparent;
+  height: 0px;
+  width: 0px;
+  margin-right: -20px;
+  right: 0; 
+}
+
+.arrow:hover, .arrow:active {
+  background: yellow;
+  color: black;
+  &:after {
+    // triangle hover
+    border-left: 20px solid yellow;
+  }
+} */
