@@ -1,14 +1,15 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path')
-const { exec } = require('child_process')
+const { exec, execFile } = require('child_process');
+const { kill } = require('process');
 
 var proc;
 
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 500,
+    width: 650,
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -19,8 +20,11 @@ function createWindow () {
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 
+  // Hide the menu bar
+  Menu.setApplicationMenu(null);
+
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
@@ -32,7 +36,7 @@ app.whenReady().then(() => {
   // Spawn python config subprocess
   const capstone_path = "/home/evan/Lehigh/cse281/Capstone/";
   const exec_str = `${capstone_path}py-audio/venv/bin/python3 ${capstone_path}py-audio/host.py`;
-  proc = exec(exec_str, (error, stdout, stderr) => {
+  proc = execFile(`${capstone_path}py-audio/venv/bin/python3`, [`${capstone_path}py-audio/host.py`], (error, stdout, stderr) => {
     if (error) {
       console.log(error.stack);
       console.log('Error code: '+error.code);
@@ -41,6 +45,7 @@ app.whenReady().then(() => {
     console.log('Child Process STDOUT: '+stdout);
     console.log('Child Process STDERR: '+stderr);
   });
+  console.log(proc.pid)
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
@@ -54,7 +59,8 @@ app.whenReady().then(() => {
 // explicitly with Cmd + Q.
 app.on('window-all-closed', function () {
   // Kill the python host process
-  proc.kill('SIGTERM');
+  const killval = proc.kill("SIGINT");
+  console.log("Killval: " + killval);
   if (process.platform !== 'darwin') app.quit();
 })
 

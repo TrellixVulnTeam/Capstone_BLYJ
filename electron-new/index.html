@@ -17,8 +17,9 @@
   </head>
   <body>
 
-    <!-- Main Card holder. The "one" class specifies the number of columns -->
+    <!-- Main Card holder. We just want one column of cards -->
     <div class="ui one cards" id="cardcontainer">
+      <!-- Initial Card in the list -->
       <div class="card">
         <div class="content">
           <span class="left floated">
@@ -35,6 +36,43 @@
               <i class="dropdown icon"></i>
             </div>
           </span>
+        </div>
+        <!-- INPUT EXTRA CONTENT -->
+        <div class="extra content voicecontent">
+          <!-- Voice input textbox -->
+          <div class="ui input left icon fluid voiceinput">
+            <i class="microphone icon"></i>
+            <input type="text" placeholder="Voice Recognition Text">
+          </div>
+        </div>
+        <!-- ACTION EXTRA CONTENT -->
+        <div class="extra content ttscontent">
+          <!-- TTS Speaker Selector -->
+          <div class="ui dropdown selection ttsspeakerselector">
+            <div class="text"></div>
+            <i class="dropdown icon"></i>
+          </div>
+          &nbsp; <b>Says:</b> &nbsp;
+          <!-- TTS textbox -->
+          <div class="ui input left icon ttsinput">
+            <i class="volume up icon"></i>
+            <input type="text" placeholder="TTS Text">
+          </div>
+        </div>
+        <div class="extra content commandcontent">
+          <!-- Shell Command -->
+          <div class="ui input left icon fluid commandinput">
+            <i class="play icon"></i>
+            <input type="text" placeholder="Shell Command">
+          </div>
+        </div>
+        <!-- TODO: Switch desktop numerical textbox; HOTKEY command -->
+        <div class="extra content typecontent">
+          <!-- Type Command -->
+          <div class="ui input left icon fluid typeinput">
+            <i class="edit icon"></i>
+            <input type="text" placeholder="Text to type">
+          </div>
         </div>
       </div>
     </div>
