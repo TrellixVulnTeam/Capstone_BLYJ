@@ -11,6 +11,9 @@ import os.path, time
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 import pyautogui
+from Levenshtein.StringMatcher import StringMatcher
+import string
+from TTS import vocodeSpeak     # Thanks Jitong!
 
 
 def read_config():
@@ -47,10 +50,19 @@ def mediapipe_thread(job_queue):
         process.terminate()
 
 def do_action(mapping):
-    if mapping['action_type'] == 'TYPE_STARWARS':
+    action = mapping['action']
+    action_data = mapping['action_data']
+
+    if action == 'TYPE_STARWARS':
         pyautogui.write("starwars")
-    elif mapping['action_type'] == 'OPEN_TERMINAL':
+    elif action == 'OPEN_TERMINAL':
         pyautogui.hotkey('ctrl', 'alt', 't')
+    elif action == 'TYPE':
+        pyautogui.write(action_data['type_text'])
+    elif action == 'TTS':
+        vocodeSpeak(action_data['tts_speaker'], action_data['tts_text'])
+    elif action == 'COMMAND':
+        pass
 
 
 if __name__ == "__main__":
@@ -66,10 +78,10 @@ if __name__ == "__main__":
 
     # Start two threads, one for VOICE input, one for hand recognition input (VIDEO).
     # FIXME: Temporarily disabled voice as it wasn't working
-    # voice_thread = threading.Thread(target=sd.record, args=(job_queue, CAPSTONE_PATH / 'py-audio/deepspeech-0.8.1-models.pbmm'))
+    voice_thread = threading.Thread(target=sd.record, args=(job_queue, CAPSTONE_PATH / 'py-audio/deepspeech-0.8.1-models.pbmm'))
     video_thread = threading.Thread(target=mediapipe_thread, args=(job_queue,))
     video_thread.start()
-    # voice_thread.start()
+    voice_thread.start()
 
     gesture = ""
     gesture_counter = 0
@@ -83,28 +95,43 @@ if __name__ == "__main__":
         if method == "GESTURE":
             if data != gesture:
                 gesture = data
-                gesture_counter = 0
+                gesture_frame_counter = 0
             else:
-                gesture_counter += 1
+                gesture_frame_counter += 1
                 # Require 10 results in a row of the same gesture for this to function.
-                if gesture_counter >= 10:
+                if gesture_frame_counter >= 10:
                     # Now search the config dict to see what we should do
                     for mapping in config_entries:
-                        if mapping['input_type'] == 'GESTURE' and mapping['input'] == gesture:
-                            action_type = mapping['action_type']
-                            # print(action_type)
+                        if mapping['input'] == gesture:
+                            action = mapping['input']
+                            # print(action)
                             # Delay at least 10 seconds
-                            if action_type in delay_map:
-                                if time.time() - delay_map[action_type] > 10:
+                            if action in delay_map:
+                                if time.time() - delay_map[action] > 10:
                                     do_action(mapping)
-                                    delay_map[action_type] = time.time()
+                                    delay_map[action] = time.time()
                             else:
                                 # If the mapping doesn't exist yet, just do the action.
                                 do_action(mapping)
-                                delay_map[action_type] = time.time()
-
-
+                                delay_map[action] = time.time()
+        elif method == "VOICE":
+            # NO delay because this happens a lot less frequently.
+            for mapping in config_entries:
+                if mapping['input'] == 'VOICE':
+                    # Check the levenshtein ratio is greater than 0.9. I.e. The strings are more than 90% similar.
+                    mapped_voice_input: str = mapping['input_data']['voice_input']
+                    # Clean up both strings to improve accuracy. Make them lowercase and remove all punctuation.
+                    mapped_voice_input = mapped_voice_input.lower().translate(str.maketrans('', '', string.punctuation))
+                    user_voice_input = data.lower().translate(str.maketrans('', '', string.punctuation))
+                    sm = StringMatcher(seq1=user_voice_input, seq2=mapped_voice_input)
+                    print("User voice input:", user_voice_input)
+                    print("Mapped voice input:", mapped_voice_input)
+                    print(sm.distance(), sm.ratio())
+                    if sm.ratio() >= 0.9:
+                        # Do the action
+                        do_action(mapping)
 
         # TODO: Add a config file of some kind. Will is using a python config file, which would be easy. The problem is,
         # TODO: execute -> config_entries[data] 
     observer.join()
+
