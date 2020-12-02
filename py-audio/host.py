@@ -63,6 +63,12 @@ def do_action(mapping):
         vocodeSpeak(action_data['tts_speaker'], action_data['tts_text'])
     elif action == 'COMMAND':
         pass
+	elif action == 'HOTKEY':
+		# might be wise to sanitize input or do a try/catch
+		pyautogui.hotkey(*(action_data['hotkey'].split()))
+	elif action == 'CLICK_LOCATION'
+		pyautogui.moveTo(action_data['location'][0], action_data['location'][1])
+		pyautogui.click()
 
 
 if __name__ == "__main__":
