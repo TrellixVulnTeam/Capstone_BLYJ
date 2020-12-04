@@ -22,56 +22,38 @@ h1{
   font-family: 'Exo 2', sans-serif;
 }
 
-#gesture-window{
-  left: 95%;
-  top: 50%
-}
-
-#sound-window{
-  left: 5%;
-  top: 50%
-}
-
-#top{
-  background-size: cover;
-  color: white;
-
-}
-#medium{
-  background-size: cover;
-  color: white;
-}
-
-#close {
-  color:black;
-  opacity: 0.7;
+#add{
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 30px;
-  text-decoration: none;
+  bottom: 8px;
+  left: 16px;
 }
-.arrow {
+#save{
   position: absolute;
-  padding: 3rem; /* Arrow size */
-  box-shadow: 1px -1px 0 1px plum inset;
-  -webkit-box-shadow: 2px -2px plum inset;
-  border: solid transparent;
-  border-width: 0 0 2rem 2rem;
-  transition: 0.2s;
-  }
-.arrow:hover {
-  box-shadow: 2px -2px 0 2px orchid inset;
-  -webkit-box-shadow: 4px -4px orchid inset;
-  }
-  .arrow { top:50%;margin:-67px 0 0 -67px;left:35% }
-  a:nth-child(2) { left:65% }
-  .arrow-up    { transform:rotate(135deg) }
-  .arrow-right { transform:rotate(225deg) }
-  .arrow-down  { transform:rotate(-45deg) }
-  .arrow-left  { transform:rotate(45deg) }
-  
+  bottom: 8px;
+  right: 16px;
+}
+#status{
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+.ui.dropdown{
+  float: left;
+}
+
+.ui.form{
+  float: left;
+}
+div.ui.container{
+  display: flex;
+}
+
+/*Change: Setting the style of the Remove button */
+.ui.icon.red.button{
+  position: absolute;
+  right: 100px;
+}
+
 
 /* .arrow {
   cursor: pointer;
